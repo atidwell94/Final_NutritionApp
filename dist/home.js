@@ -33,8 +33,112 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _general__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./general */ "./src/js/general.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
 var regeneratorRuntime = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+var Home = /*#__PURE__*/function () {
+  function Home() {
+    var _this = this;
+    _classCallCheck(this, Home);
+    // API ACCESS INFORMATION
+    this.EDAMAM_ID = "829d4216";
+    this.EDAMAM_KEY = "cfc765761ada5166d7dd4df6921dff8c";
+
+    // VARIABLE TO STORE PARSED FOOD ITEM INFORMATION
+    this.foodItem = {
+      ingredients: [{
+        quantity: 1,
+        measureURI: "",
+        qualifiers: [],
+        foodId: ""
+      }]
+    };
+    this.$search = document.querySelector("#searchForm");
+    this.$servingSize = document.querySelector("#serving-sizes");
+    this.$servingsQuantity = document.querySelector("#servings-quantity");
+    this.$itemDetails = document.querySelector("#details-area");
+    this.onSearchSubmit = this.onSearchSubmit.bind(this);
+    this.getSearchValue = this.getSearchValue.bind(this);
+    this.addItem = this.addItem.bind(this);
+    this.revealDetails = this.revealDetails.bind(this);
+    this.$search.addEventListener("submit", this.onSearchSubmit);
+
+    // this.$.addEventListener("addBtn", event => {
+    //     this.addItem(event)
+    // });
+
+    this.$itemDetails.addEventListener("detailsBtn", function (event) {
+      _this.revealDetails(event);
+    });
+  }
+
+  // METHODS-----------------------------------------------------
+  _createClass(Home, [{
+    key: "onSearchSubmit",
+    value: function onSearchSubmit(event) {
+      // console.log("click");
+      // event.preventDefault();
+      // const searchValue = this.getSearchValue();
+      // const url = `https://api.edamam.com/api/food-database/v2/parser?app_id=${this.EDAMAM_ID}&app_key=${this.EDAMAM_KEY}&ingr=${searchValue}&nutrition-type=logging`;
+      // const options = {
+      //     method: 'GET',
+      //     headers: {  // I don't know what these do since it doesn't seem to matter if they are present or not
+      //         'API-Key': 'cfc765761ada5166d7dd4df6921dff8c',
+      //         'Host': 'http://localhost:8080/'
+      //     }
+      // };
+
+      // try {
+      //     const response = await fetch(url, options);
+      //     const result = await response.text();
+      //     this.foodItem.ingredients.foodId = result.parsed[0].food.foodId;
+      //     console.log(this.foodItem.ingredients.foodId);
+      //     console.log(result);
+      // } catch (error) {
+      //     console.error("trouble getting information");
+      // }
+
+      event.preventDefault();
+      var searchValue = this.getSearchValue();
+      fetch("https://api.edamam.com/api/food-database/v2/parser?app_id=".concat(this.EDAMAM_ID, "&app_key=").concat(this.EDAMAM_KEY, "&ingr=").concat(searchValue, "&nutrition-type=logging")).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        console.log(data.hints[0]);
+
+        // fetch(`https://api.edamam.com/api/food-database/v2/nutrients?app_id=${this.EDAMAM_ID}&app_key=${this.EDAMAM_KEY}`)
+        // .then(response => response.json())
+        // .then(data => {
+        //     console.log(data);
+        // })
+        // .catch(error => {
+        //     alert('There was a problem getting nutrient information!')
+        // });
+      })["catch"](function (error) {
+        alert('There was a problem getting food item information!');
+      });
+    }
+  }, {
+    key: "getSearchValue",
+    value: function getSearchValue() {
+      return document.getElementById("search").value;
+    }
+  }, {
+    key: "addItem",
+    value: function addItem() {}
+  }, {
+    key: "revealDetails",
+    value: function revealDetails() {}
+  }]);
+  return Home;
+}();
+window.onload = function () {
+  new Home();
+};
 
 /***/ }),
 
@@ -66,14 +170,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.form-area {
 .title {
   margin: 20px;
 }
-.form-group {
-  min-width: 500px;
-}
-@media only screen and (max-width: 736px) {
-  .form-group {
-    min-width: 90vw;
-  }
-}
+
 .loading-indicator {
   max-height: 50px;
   max-width: 50px;
@@ -82,7 +179,13 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.form-area {
   margin: 25px;
   max-width: 600px;
 }
-`, "",{"version":3,"sources":["webpack://./src/css/styles.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,uBAAuB;AACzB;AACA;EACE,YAAY;AACd;AACA;EACE,gBAAgB;AAClB;AACA;EACE;IACE,eAAe;EACjB;AACF;AACA;EACE,gBAAgB;EAChB,eAAe;AACjB;AACA;EACE,YAAY;EACZ,gBAAgB;AAClB","sourcesContent":[".form-area {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n.title {\r\n  margin: 20px;\r\n}\r\n.form-group {\r\n  min-width: 500px;\r\n}\r\n@media only screen and (max-width: 736px) {\r\n  .form-group {\r\n    min-width: 90vw;\r\n  }\r\n}\r\n.loading-indicator {\r\n  max-height: 50px;\r\n  max-width: 50px;\r\n}\r\n.chart-area {\r\n  margin: 25px;\r\n  max-width: 600px;\r\n}\r\n"],"sourceRoot":""}]);
+.navbar-fixed-left {
+  width: 140px;
+  position: fixed;
+  border-radius: 0;
+  height: 100%;
+  }
+`, "",{"version":3,"sources":["webpack://./src/css/styles.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,uBAAuB;AACzB;AACA;EACE,YAAY;AACd;;AAEA;EACE,gBAAgB;EAChB,eAAe;AACjB;AACA;EACE,YAAY;EACZ,gBAAgB;AAClB;AACA;EACE,YAAY;EACZ,eAAe;EACf,gBAAgB;EAChB,YAAY;EACZ","sourcesContent":[".form-area {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n.title {\r\n  margin: 20px;\r\n}\r\n\r\n.loading-indicator {\r\n  max-height: 50px;\r\n  max-width: 50px;\r\n}\r\n.chart-area {\r\n  margin: 25px;\r\n  max-width: 600px;\r\n}\r\n.navbar-fixed-left {\r\n  width: 140px;\r\n  position: fixed;\r\n  border-radius: 0;\r\n  height: 100%;\r\n  }\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

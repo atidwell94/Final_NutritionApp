@@ -7,10 +7,12 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-    <div class="container-fluid">
-      <ul class="navbar-nav">
-        <li class="navbar-brand">Nutrition Center</li>
+  <nav class="d-grid pt-3">
+    <div class="container">
+      <ul class="nav nav-tabs">
+        <li class="nav-brand pe-4 ps-2">
+            <h4>Nutrition Center</h4>
+        </li>
         <li class="nav-item">
           <a class="nav-link active" href="#">Home</a>
         </li>
@@ -24,9 +26,236 @@
     </div>
   </nav>
 
-  <div class="container">
-    
-  </div>
+  <div class="container ps-0">
+    <div class="row">
+        <div class="col-sm-2">
+            <nav class="d-grid">
+                <div class="container">
+                    <ul class="nav navbar-fixed-left bg-primary flex-column">
+                         <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Profile</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Goals</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Settings</a>
+                          </li> 
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="col-sm-6 pt-3">
+            <h4>Find a food!</h4>
+            <form id="searchForm">
+                <div class="input-group mb-3 pe-4">
+                    <input type="input" class="form-control rounded-5" placeholder="ex. apple" id="search" name="search" value="" required>
+                    <button class="btn btn-primary rounded-5" type="submit" id="searchBtn">Go</button>
+                </div>
+            </form>
+            <div class="d-grid text-white pe-4">
+                <div class="container bg-secondary text-white border border-start-0 border-end-0 border-top-0 ps-0 pe-0 rounded">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="btn btn-sm text-white btn-outline-dark ps-2 pe-2 pt-1 pb-1 rounded"id="addBtn">+</div>
+                        </div>
+                        <div class="col-sm-5 text-start d-flex align-items-center">Food Result</div>
+                        <div class="col-sm-3 text-start d-flex align-items-center">Servings: </div>
+                        <div class="col-sm-2 text-start d-flex align-items-center">Calories: </div>
+                        <div class="col-sm-1">
+                            <div class="btn btn-sm text-white text-end  ps-2 pe-2 pt-1 pb-1"id="detailsBtn">:</div>
+                        </div>
+                    </div>
+                    <div class="details-area bg-light text-dark" id="details-area">
+                        <div class="row ps-3 pe-3">                           
+                            <div class="input-group mt-3 mb-3">
+                                <input class="form-control" list="servings" name="serving-sizes" id="serving-sizes" placeholder="Serving Size">
+                                    <datalist id="servings">
+                                        <option value="1 gram">
+                                        <option value="30 grams">
+                                        <option value="1 ounce">
+                                        <option value="1 lb">
+                                        <option value="1 container">
+                                    </datalist>
+                                <input type="text" class="form-control" placeholder="Quantity" id="servings-quantity">
+                            </div>                    
+                        </div>
+                        <div class="row ps-3 pe-3 pb-3">
+                            <div class="col-sm-4">
+                                Carbs: 
+                            </div>
+                            <div class="col-sm-4">
+                                Protein: 
+                            </div>
+                            <div class="col-sm-4">
+                                Fats: 
+                            </div>
+                        </div>
+                    </div> 
+                </div>                
+                <div class="container bg-secondary text-white border border-start-0 border-end-0 border-top-0 ps-0 pe-0 rounded">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="btn btn-sm text-white btn-outline-dark ps-2 pe-2 pt-1 pb-1" id="addBtn">+</div>
+                        </div>
+                        <div class="col-sm-5 text-start d-flex align-items-center">Food Result</div>
+                        <div class="col-sm-3 text-start d-flex align-items-center">Servings: </div>
+                        <div class="col-sm-2 text-start d-flex align-items-center">Calories: </div>
+                        <div class="col-sm-1">
+                            <div class="btn btn-sm text-white text-end  ps-2 pe-2 pt-1 pb-1" id="detailsBtn">:</div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="container bg-secondary text-white border border-start-0 border-end-0 border-top-0 ps-0 pe-0 rounded">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="btn btn-sm text-white btn-outline-dark ps-2 pe-2 pt-1 pb-1"id="addBtn">+</div>
+                        </div>
+                        <div class="col-sm-5 text-start d-flex align-items-center">Food Result</div>
+                        <div class="col-sm-3 text-start d-flex align-items-center">Servings: </div>
+                        <div class="col-sm-2 text-start d-flex align-items-center">Calories: </div>
+                        <div class="col-sm-1">
+                            <div class="btn btn-sm text-white text-end  ps-2 pe-2 pt-1 pb-1"id="detailsBtn">:</div>
+                        </div>
+                    </div>
+                </div> 
+                <!-- <div class="container bg-secondary text-white border border-start-0 border-end-0 border-top-0 ps-0 pe-0 rounded">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="btn btn-sm text-white btn-outline-dark ps-2 pe-2 pt-1 pb-1"id="addBtn">+</div>
+                        </div>
+                        <div class="col-sm-5 text-start d-flex align-items-center">Food Result</div>
+                        <div class="col-sm-3 text-start d-flex align-items-center">Servings: </div>
+                        <div class="col-sm-2 text-start d-flex align-items-center">Calories: </div>
+                        <div class="col-sm-1">
+                            <div class="btn btn-sm text-white text-end  ps-2 pe-2 pt-1 pb-1"id="detailsBtn">:</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container bg-secondary text-white border border-start-0 border-end-0 border-top-0 ps-0 pe-0 rounded">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="btn btn-sm text-white btn-outline-dark ps-2 pe-2 pt-1 pb-1"id="addBtn">+</div>
+                        </div>
+                        <div class="col-sm-5 text-start d-flex align-items-center">Food Result</div>
+                        <div class="col-sm-3 text-start d-flex align-items-center">Servings: </div>
+                        <div class="col-sm-2 text-start d-flex align-items-center">Calories: </div>
+                        <div class="col-sm-1">
+                            <div class="btn btn-sm text-white text-end  ps-2 pe-2 pt-1 pb-1"id="detailsBtn">:</div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="container bg-secondary text-white border border-start-0 border-end-0 border-top-0 ps-0 pe-0 rounded">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="btn btn-sm text-white btn-outline-dark ps-2 pe-2 pt-1 pb-1"id="addBtn">+</div>
+                        </div>
+                        <div class="col-sm-5 text-start d-flex align-items-center">Food Result</div>
+                        <div class="col-sm-3 text-start d-flex align-items-center">Servings: </div>
+                        <div class="col-sm-2 text-start d-flex align-items-center">Calories: </div>
+                        <div class="col-sm-1">
+                            <div class="btn btn-sm text-white text-end  ps-2 pe-2 pt-1 pb-1"id="detailsBtn">:</div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="container bg-secondary text-white border border-start-0 border-end-0 border-top-0 ps-0 pe-0 rounded">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="btn btn-sm text-white btn-outline-dark ps-2 pe-2 pt-1 pb-1"id="addBtn">+</div>
+                        </div>
+                        <div class="col-sm-5 text-start d-flex align-items-center">Food Result</div>
+                        <div class="col-sm-3 text-start d-flex align-items-center">Servings: </div>
+                        <div class="col-sm-2 text-start d-flex align-items-center">Calories: </div>
+                        <div class="col-sm-1">
+                            <div class="btn btn-sm text-white text-end  ps-2 pe-2 pt-1 pb-1"id="detailsBtn">:</div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="container bg-secondary text-white border border-start-0 border-end-0 border-top-0 ps-0 pe-0 rounded">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="btn btn-sm text-white btn-outline-dark ps-2 pe-2 pt-1 pb-1"id="addBtn">+</div>
+                        </div>
+                        <div class="col-sm-5 text-start d-flex align-items-center">Food Result</div>
+                        <div class="col-sm-3 text-start d-flex align-items-center">Servings: </div>
+                        <div class="col-sm-2 text-start d-flex align-items-center">Calories: </div>
+                        <div class="col-sm-1">
+                            <div class="btn btn-sm text-white text-end  ps-2 pe-2 pt-1 pb-1"id="detailsBtn">:</div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="container bg-secondary text-white border border-start-0 border-end-0 border-top-0 ps-0 pe-0 rounded">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="btn btn-sm text-white btn-outline-dark ps-2 pe-2 pt-1 pb-1"id="addBtn">+</div>
+                        </div>
+                        <div class="col-sm-5 text-start d-flex align-items-center">Food Result</div>
+                        <div class="col-sm-3 text-start d-flex align-items-center">Servings: </div>
+                        <div class="col-sm-2 text-start d-flex align-items-center">Calories: </div>
+                        <div class="col-sm-1">
+                            <div class="btn btn-sm text-white text-end  ps-2 pe-2 pt-1 pb-1"id="detailsBtn">:</div>
+                        </div>
+                    </div>
+                </div>  -->
+            </div>
+        </div>    
+        <div class="col-sm-4 pt-2 bg-primary rounded-5 text-center text-white shadow-lg">               
+            <h2 class="pt-1 pb-2">Today's Stats</h2>                    
+            <div class="container bg-white text-dark text-center rounded-5 pb-3">
+                <h1><span class="align-top text-success">1500</span><small><span class="align-middle">/</span><span class="align-bottom">2000</span></small></h1>
+                <div class="progress">
+                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width:75%">75%</div>
+                  </div>
+            </div>
+            <div class="container text-white text-center">
+                <!-- <h2>Macro Piechart</h2> -->
+                <img src="assets/images/piechart.png" alt="piechart" width="200" height="200">
+                <div class="chart-area visually-hidden" id="chartArea">
+                    <canvas id="macroChart"></canvas>
+                </div>
+            </div>
+            <div class="container text-white text-center">
+                <!-- <h2>Macro Breakdown</h2> -->
+                <div class="container pb-2">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            Carbs
+                        </div>
+                        <div class="col-sm-4">
+                            120g
+                        </div>
+                        <div class="col-sm-4">
+                            44%
+                        </div>
+                    </div>
+                    <div class="row border border-start-0 border-end-0 border-bottom-0">
+                        <div class="col-sm-4">
+                            Protein
+                        </div>
+                        <div class="col-sm-4">
+                            70g
+                        </div>
+                        <div class="col-sm-4">
+                            26%
+                        </div>
+                    </div>
+                    <div class="row border border-start-0 border-end-0 border-bottom-0">
+                        <div class="col-sm-4">
+                            Fats
+                        </div>
+                        <div class="col-sm-4">
+                            83g
+                        </div>
+                        <div class="col-sm-4">
+                            30%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>                 
+    </div>
+</div>
+</div>
   
 <script defer src="vendors-node_modules_bootstrap_dist_js_bootstrap_esm_js-node_modules_regenerator-runtime_runt-dc5691.js"></script><script defer src="home.js"></script></body>
 </html>
